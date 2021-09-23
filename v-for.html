@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+</head>
+<body>
+
+    <div id="directives">
+
+        <h2>Cidades do Mundo</h2>
+
+        <ol>
+           <!--  <li v-for="city in cities"> {{ city }}</li> array -->
+           <li v-for="item in cities">
+               {{item.city}} - {{item.country}}
+           </li>
+        </ol>
+        <h2>Grandes filmes da história</h2>
+        <ul>
+            <li v-for="(picture, index) in movies">
+                {{index}} . {{picture}}
+            </li>
+        </ul>
+        <h2>Empresa</h2>
+        <p v-for="(value, key, index) in company">{{key}} : {{value}} </p>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+    
+    <script>
+
+    let app = new Vue({
+         el:"#directives",
+         data:{
+             // cities: ['Nova Iorque', 'São Pualo', 'londres', 'Rio de Janeiro'] -> array
+            cities : [{
+                city: 'Nova Iorque',
+                country: 'EUA'
+            },
+            {
+                city: 'São Paulo',
+                country: 'Brasil'
+            },
+            {
+                city: 'Londres',
+                country: 'Inglaterra'
+            },
+            {
+                city: 'Rio de Janeiro',
+                country: 'Brasil'
+            }
+        ],
+        movies: ['Star Wars', 'Juras que Park', 'De volta para o futuro'],
+        company: {
+            name: 'Facebook',
+            year: 2004, 
+            creator: 'Mark'
+        }
+           
+            }
+        })
+
+
+    </script>
+</body>
+</html>
