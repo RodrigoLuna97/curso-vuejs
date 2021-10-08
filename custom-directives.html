@@ -11,7 +11,8 @@
     <div id="directives">
         
      <h4 v-upper>{{ name }}</h4>
-     <h2 v-capitalize>hello world super mario</h2>
+     <h2 v-capitalize> hello world super mario</h2>
+     
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
@@ -31,15 +32,31 @@
             },
 
             directive:{
-                capitalize: function(element){
+                capitalize: {
 
-                    let words = element.innerText.split(' ');
+                    bind(element){
+                        console.log('BIND - Fui vinculado a um elemento')
+                    }, 
+                    inserted(element) {
+                        console.log('INSERTED - O elemento foi inserido na página')
+                        let words = element.innerText.split(' ');
 
-                    words.forEach((text, index)  => {
-                        words[index] = text.charAt(0).toUpperCase() + text.slice(1);
-                    });
+                words.forEach((text,index) => {
+                words[index] =text.charAt(0).toUpperCase() + text.slice(1);
+                })
                     element.innerText = words.join(' ');
+                },
+                update(element){
+                    console.log('UPDATE - Quando o elemento for  atualizado')
+                },
+                unbind(element){
+                    console.log('UNBIND - O elemento foi desvinculado')
+                },
+                compontentUpdated(element){
+                    console.log('COMPONENTUPDATED - O componente foi atualizado')
                 }
+                    }
+                    
             }
         })
 
