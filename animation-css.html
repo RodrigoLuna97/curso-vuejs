@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação com css</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+    .animation-enter-active{
+        animation: animation 1s;
+}
+    .animation-leave-active{
+        animation: animation 1s reverse;
+}
+@keyframes animation{
+    from {
+        background: #fff;
+    }
+    to{
+        background: #999;
+    }
+}
+/* */ 
+.animation2-enter-active{
+    animation: animation2 1s;
+}
+.animation2-leave-active{
+    animation: animaton2 1.5s reverse;
+}
+@keyframes animation2 {
+    0%{
+        background-color: #fff;
+        font-size: 20px;
+    }
+    50%{
+        background-color: red;
+        font-size: 50px;
+    }
+    100%{
+        background-color: #fff;
+        font-size: 20px;
+
+    }
+}
+
+        
+    </style>
+</head>
+<body>
+
+    <div id="transitions">
+        <transition name="animation">
+        <h2 v-if="show">Hcode treinamentos animações</h2>
+        </transition>
+        <hr>
+
+        <transition name="animation2">
+        <div v-if="show2">Vuejs é demais
+        </div>
+
+    </transition>
+    <button @click="show2 = !show2">Clique aqui</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+    
+    <script>
+    
+        let app = new Vue({
+         el:"#transitions",
+         data:{
+           show: true,
+           show2: false
+         }
+        })
+
+
+    </script>
+</body>
+</html>
