@@ -32,7 +32,26 @@
                </div>
                
            </form>
-           
+           <hr>
+           <div class="row">
+
+                <div class="col" @click.ctrl.exact="toggleClass">
+                    1
+                </div>
+
+                <div class="col" @click.ctrl.exact="toggleClass">
+                    2
+                </div>
+
+                <div class="col" @click.ctrl.exact="toggleClass">
+                    3
+                </div>
+
+                <div class="col" @click.ctrl.exact="toggleClass">
+                    4
+                </div>
+
+           </div>
         </div>
        
     </div>
@@ -49,8 +68,16 @@
             methods: {
               exec(e){
                 console.log(e.key);
+              },
+
+              toggleClass(){
+
+                let el = event.target;
+
+                let method = (el.classList.contains('bg-info')) ? 'remove' : 'add';
+               
+                eval(`el.classList.${method}('bg-info')`);
               }
-    
             }
         })
 
